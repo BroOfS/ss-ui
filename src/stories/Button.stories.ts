@@ -1,8 +1,11 @@
+import {
+  Button,
+  type ButtonVariants,
+  type ButtonSizes,
+} from "@/components/ui/button"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { fn } from "storybook/test"
-
-import { Button } from "./Button"
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -16,7 +19,15 @@ const meta = {
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/arg-types
   argTypes: {
-    backgroundColor: { control: "color" },
+    variant: {
+      control: "select",
+      options: [
+        "default",
+        "destructive",
+        "ghost",
+        "link",
+      ] satisfies ButtonVariants[],
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { onClick: fn() },
@@ -28,34 +39,34 @@ type Story = StoryObj<typeof meta>
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
-    label: "Button",
+    variant: "default",
+    children: "Button",
   },
 }
 
 export const Secondary: Story = {
   args: {
-    label: "Button",
+    children: "Button",
   },
 }
 
 export const Large: Story = {
   args: {
-    size: "large",
-    label: "Button",
+    size: "lg",
+    children: "Button",
   },
 }
 
 export const Small: Story = {
   args: {
-    size: "small",
-    label: "Button",
+    size: "sm",
+    children: "Button",
   },
 }
 
 export const Test: Story = {
   args: {
-    primary: false,
-    label: "Button",
+    variant: "secondary",
+    children: "Button",
   },
 }
