@@ -25,3 +25,8 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+public/r
+*.tgz
+.env
+.env.local
